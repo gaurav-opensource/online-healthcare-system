@@ -21,6 +21,9 @@ connectDB().then(() => {
 }).catch((err) => {
   logger.error('Database connection failed:', err.message);
 });
+app.get('/', (req, res) => {
+  res.send('Backend API is running');
+});
 
 app.use('/api/admin', AdminRoute);
 app.use('/api/users', UserRoute);

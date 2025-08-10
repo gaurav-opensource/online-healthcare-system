@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import UploadPrescription from './UploadPrescription'; // ✅ Make sure the path is correct
-import BASE_URL from '../../src/apiConfig';
+import BASE_URL from '../../../src/apiConfig'; 
 const PendingAppoinment = () => {
   const [appointments, setAppointments] = useState([]);
  

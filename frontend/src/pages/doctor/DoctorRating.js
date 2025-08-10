@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, TextField, Rating as MuiRating, Typography, Box } from '@mui/material';
 import { useParams } from 'react-router-dom';
-import BASE_URL from '../../src/apiConfig';
+import BASE_URL from '../../../src/apiConfig'; 
 const SubmitRating = () => {
   const { appointmentId, doctorId } = useParams();
   const [rating, setRating] = useState(0);

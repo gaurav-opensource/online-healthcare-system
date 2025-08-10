@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-import BASE_URL from '../../src/apiConfig';// backend base URL
+import BASE_URL from '../../../src/apiConfig';
 
 const DoctorProfilePage = () => {
   const [doctor, setDoctor] = useState(null);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import BASE_URL from '../../src/apiConfig';
+import BASE_URL from '../../../src/apiConfig'; 
 
 const UploadPrescription = ({ appointmentId, onUploadSuccess }) => {
   const [pdfFile, setPdfFile] = useState(null);

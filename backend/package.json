@@ -122,10 +122,11 @@
     "winston": "^3.17.0",
     "wrappy": "^1.0.2"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node servers.js"
-  },
+ "scripts": {
+  "start": "node servers.js",
+  "build": "echo 'No build step required'"
+},
+
   "keywords": [],
   "author": "",
   "license": "ISC",

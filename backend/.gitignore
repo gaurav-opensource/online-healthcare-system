@@ -1,0 +1,10 @@
+# The 'node_modules' folder contains all your project's dependencies and should not be committed.
+node_modules/
+
+# Environment variables files, which often contain sensitive information.
+.env
+.env.local
+
+# Build outputs
+dist/
+build/

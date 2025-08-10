@@ -1,0 +1,48 @@
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-03T23:57:17.685Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-03T23:57:18.703Z"}
+{"level":"info","message":"POST /users/login","timestamp":"2025-08-04T00:04:47.184Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-05T05:24:24.666Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-05T05:24:30.937Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-05T05:37:52.896Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T10:55:40.317Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T10:55:41.897Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T10:57:18.904Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:01:01.899Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:01:35.821Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:01:50.091Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:02:16.675Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:02:21.999Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:02:24.105Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:02:25.004Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:02:39.203Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:10:52.623Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:11:44.153Z"}
+{"level":"info","message":"POST /admin/login","timestamp":"2025-08-10T11:11:47.311Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T11:41:46.935Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T11:41:49.480Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T11:42:06.366Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T11:42:14.146Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:46:09.105Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:46:09.125Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T11:46:46.495Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T11:46:48.281Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:46:53.372Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:46:53.492Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T11:47:43.135Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T11:47:44.738Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:48:01.656Z"}
+{"level":"info","message":"GET /api/admin/stats","timestamp":"2025-08-10T11:48:01.733Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T11:48:20.645Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T11:48:22.236Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:22.895Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:22.902Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:44.778Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:44.787Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:52.548Z"}
+{"level":"info","message":"GET /api/api/users/profile","timestamp":"2025-08-10T12:16:52.555Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T12:27:01.727Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T12:27:02.976Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T13:11:52.417Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T13:11:53.624Z"}
+{"level":"info","message":"Server running at http://localhost:5000","timestamp":"2025-08-10T13:19:27.371Z"}
+{"level":"info","message":"Database connected successfully","timestamp":"2025-08-10T13:19:29.037Z"}

@@ -25,9 +25,8 @@ const doctorSchema = new mongoose.Schema({
     required: true,
   },
   profilePhoto: {
-    type: String, // Path to local profile photo
+    type: String, 
   },
-  // Doctor-specific fields
   licenseNumber: {
     type: String,
     required:true,
@@ -45,30 +44,69 @@ const doctorSchema = new mongoose.Schema({
   },
   specialization: {
     type: String,
-    enum: ['Cardiology', 'General Physician', 'Orthopedics', 'Pediatrics', 'Neurology', 'Dermatology', 'Other'],
+    enum: [
+  "Cardiology",
+  "General Physician",
+  "Orthopedics",
+  "Pediatrics",
+  "Neurology",
+  "Dermatology",
+  "Other",
+
+  // ✅ Added 20 more
+  "Gynecology",
+  "Psychiatry",
+  "Radiology",
+  "Oncology",
+  "Nephrology",
+  "Urology",
+  "Endocrinology",
+  "Gastroenterology",
+  "Pulmonology",
+  "Hematology",
+  "Rheumatology",
+  "Ophthalmology",
+  "ENT (Ear, Nose, Throat)",
+  "Dentistry",
+  "Anesthesiology",
+  "Pathology",
+  "Infectious Diseases",
+  "Plastic Surgery",
+  "Sports Medicine",
+  "Emergency Medicine",
+  "Geriatrics",
+  "Allergy & Immunology",
+  "Occupational Medicine"
+]
+,
     required: true,
   },
   certification: {
-    type: String, // Path to local certification PDF
+    type: String, 
     required: true,
   },
   isVerified: {
     type: Boolean,
     default: false,
-    
   },
   availability: [{
     date: Date,
-    startTime: String, // e.g., "10:00"
-    endTime: String,   // e.g., "11:00"
+    startTime: String,
+    endTime: String,
   }],
-
-   // New fields
   about: { type: String, default: "" },
   experience: { type: String, default: "" },
   achievements: { type: String, default: "" },
-  rating: { type: Number, default: 0 }, // Optional: for system-generated
   other: { type: String, default: "" },
+  savedCardToken: String,
+
+  receivedPayments: [{
+    appointment: { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' },
+    amount: Number,
+    method: String,
+    paymentStatus: String,
+    date: { type: Date, default: Date.now }
+  }],
  
   createdAt: {
     type: Date,

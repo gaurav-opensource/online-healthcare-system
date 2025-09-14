@@ -37,7 +37,7 @@ const UploadPrescription = ({ appointmentId, onUploadSuccess }) => {
       console.log(pdfUrl);
       await axios.put(
         `${BASE_URL}/appointments/${appointmentId}/test-prescription`,
-        { testUpload: pdfUrl }, // ✅ corrected key from testUpload → prescription
+        { testUpload: pdfUrl }, 
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

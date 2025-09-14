@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom for routing
+import { Link } from 'react-router-dom'; 
 
 export default function Footer() {
-  // Get the current year dynamically
+  
   const currentYear = new Date().getFullYear();
 
   return (

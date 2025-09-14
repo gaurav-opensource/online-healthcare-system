@@ -9,16 +9,16 @@ const {
   getAppointmentByRoomId,
   markAppointmentCompleted,
   uploadPrescription,
-} = require('../controllers/appointment.controlle');
+} = require('../controllers/appointment.controller');
 
 
 
 
-const { auth } = require('../middleware/auth'); // Import the auth middleware
+const { auth } = require('../middleware/auth'); 
 const { restrictTo } = require('../middleware/role'); 
 
-// Routes
-router.post('/', auth,restrictTo('user'),createAppointment);
+
+router.post('/', auth,createAppointment);
 router.get('/user/:userId',auth,restrictTo('user'), getAppointmentsByUser);
 router.get('/doctor/:doctorId',auth, restrictTo('doctor'), getAppointmentsByDoctor);
 router.get('/:appointmentId',auth, restrictTo('user'), getAppointmentById);

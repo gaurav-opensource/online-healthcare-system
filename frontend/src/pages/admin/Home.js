@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 
 
 const AdminHomePage = () => {
-  const adminName = "Admin"; // Aap isse context ya auth state se bhi le sakte hain
+  const adminName = "Admin"; 
 
-  // State for dashboard stats
+ 
   const [stats, setStats] = useState({
     totalUsers: 0,
     totalDoctors: 0,
@@ -15,7 +15,7 @@ const AdminHomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch stats from backend API on component mount
+
   useEffect(() => {
     const fetchStats = async () => {
       try {

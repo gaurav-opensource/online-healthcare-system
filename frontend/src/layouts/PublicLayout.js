@@ -1,9 +1,13 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from "react-router-dom";
+
 
 export default function PublicLayout() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <Outlet />
+    <div className="min-h-screen flex flex-col bg-gray-100">
+      {/* Page Content */}
+      <main className="flex-grow flex items-center justify-center">
+        <Outlet />
+      </main>
     </div>
   );
 }

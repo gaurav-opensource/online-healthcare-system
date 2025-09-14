@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const Joi = require('joi');
 const Doctor = require('../models/doctor.model');
 
-// Joi schema for doctor registration
+
 const doctorRegisterSchema = Joi.object({
   name: Joi.string().required(),
   email: Joi.string().email().required(),
@@ -15,17 +15,17 @@ const doctorRegisterSchema = Joi.object({
   specialization: Joi.string().valid(
     'Cardiology', 'General Physician', 'Orthopedics', 'Pediatrics', 'Neurology', 'Dermatology', 'Other'
   ).required(),
-  profilePhoto: Joi.string().uri().required(),     // ✅ Required and must be URL
-  certification: Joi.string().uri().required(),    // ✅ Required and must be URL
+  profilePhoto: Joi.string().uri().required(),    
+  certification: Joi.string().uri().required(),    
 });
 
-// Joi schema for login
+
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
 
-// Doctor registration controller
+
 exports.registerDoctor = async (req, res) => {
   try {
     // 1. Validate request body
@@ -35,22 +35,22 @@ exports.registerDoctor = async (req, res) => {
     const {
       name, email, password, location,
       licenseNumber, phoneNumber, fees,
-      specialization, profilePhoto, certification
+      specialization, profilePhoto, certification,about
     } = req.body;
 
     // 2. Check if doctor already exists
     const existingDoctor = await Doctor.findOne({ email });
     if (existingDoctor) return res.status(400).json({ message: 'Email already exists' });
 
-    // 3. Validate Cloudinary URLs
+   
     if (!profilePhoto || !certification) {
       return res.status(400).json({ message: "Photo or certificate missing" });
     }
 
-    // 4. Hash password
+    
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // 5. Create doctor document
+   
     const doctor = new Doctor({
       name,
       email,
@@ -60,8 +60,9 @@ exports.registerDoctor = async (req, res) => {
       phoneNumber,
       fees,
       specialization,
-      profilePhoto,      // ✅ Cloudinary image URL
-      certification,     // ✅ Cloudinary file URL (PDF)
+      about,
+      profilePhoto,      
+      certification,     
       isVerified: false  // Admin approval required
     });
 
@@ -92,9 +93,9 @@ exports.loginDoctor = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(password, doctor.password);
-    if (!isMatch) return res.status(401).json({ message: 'Invalid credentials' });
+    if (!isMatch) return res.status(401).json({ message: 'Password is Wrong Please try again' });
 
-    const token = jwt.sign({ userId: doctor._id, role: doctor.role }, process.env.JWT_SECRET, { expiresIn: '12h' });
+    const token = jwt.sign({ userId: doctor._id, role: doctor.role }, process.env.JWT_SECRET, { expiresIn: '24h' });
 
     res.status(200).json({
       token,
@@ -128,6 +129,7 @@ exports.doctorProfile = (req, res) => {
     location: user.location,
     phoneNumber: user.phoneNumber,
     address: user.address,
+    availability:user.availability,
     fees: user.fees,
     specialization: user.specialization,
     profilePhoto: user.profilePhoto || null,
@@ -139,11 +141,10 @@ exports.doctorProfile = (req, res) => {
   });
 };
 
-// Admin: Verify Doctor
-// Get all unverified doctors (for admin)
+
 exports.getUnverifiedDoctors = async (req, res) => {
   try {
-    const doctors = await Doctor.find({ isVerified: false }).select('-password');  // Find all whose not veerify
+    const doctors = await Doctor.find({ isVerified: false }).select('-password');
     res.status(200).json(doctors);
   } catch (error) {
     console.error('Fetch unverified doctors error:', error);
@@ -154,9 +155,9 @@ exports.getUnverifiedDoctors = async (req, res) => {
 
 
 
-// Update profile (editable fields for doctor dashboard)
 exports.updateDoctorProfile = async (req, res) => {
   try {
+    
     const doctor = await Doctor.findById(req.user.id);
     if (!doctor) {
       return res.status(404).json({ message: 'Doctor not found' });
@@ -167,18 +168,24 @@ exports.updateDoctorProfile = async (req, res) => {
       email,
       phoneNumber,
       location,
+      address,
+      availability,
       specialization,
       fees,
       about,
       experience,
       achievements,
       other,
+      profilePhoto,
+      certification,
     } = req.body;
 
     if (name !== undefined) doctor.name = name;
     if (email !== undefined) doctor.email = email;
     if (phoneNumber !== undefined) doctor.phoneNumber = phoneNumber;
     if (location !== undefined) doctor.location = location;
+    if (address !== undefined) doctor.address = address;
+    if (availability !== undefined) doctor.availability = availability;
     if (specialization !== undefined) doctor.specialization = specialization;
     if (fees !== undefined) doctor.fees = fees;
     if (about !== undefined) doctor.about = about;
@@ -186,12 +193,22 @@ exports.updateDoctorProfile = async (req, res) => {
     if (achievements !== undefined) doctor.achievements = achievements;
     if (other !== undefined) doctor.other = other;
 
+    // File/image fields handle karein
+    if (profilePhoto !== undefined) doctor.profilePhoto = profilePhoto;
+    if (certification !== undefined) doctor.certification = certification;
+
     await doctor.save();
-    res.status(200).json({ message: 'Doctor profile updated successfully', doctor });
+
+    res.status(200).json({
+      message: 'Doctor profile updated successfully',
+      doctor,
+    });
   } catch (err) {
+    console.log(err.message)
     res.status(500).json({ message: 'Failed to update profile', error: err.message });
   }
 };
+
 
 exports.getDoctors = async (req, res) => {
   try {
@@ -215,7 +232,7 @@ exports.getDoctors = async (req, res) => {
     }
 
     const doctors = await Doctor.find({ ...filter, isVerified: true }).select(
-      '-password' // Exclude password
+      '-password' 
     );
 
     res.status(200).json(doctors);

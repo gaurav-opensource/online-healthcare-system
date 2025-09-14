@@ -23,6 +23,13 @@ const userSchema = new mongoose.Schema({
     sugarLevel: String,
     weight: Number,
   },
+  paymentHistory: [{
+    appointment: { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' },
+    amount: Number,
+    method: String,
+    paymentStatus: String,
+    date: { type: Date, default: Date.now }
+  }],
   role: {
     type: String,
     enum: ['user', 'doctor', 'admin'],

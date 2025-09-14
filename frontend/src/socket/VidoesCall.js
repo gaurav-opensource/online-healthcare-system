@@ -10,9 +10,11 @@ import MicIcon from '@mui/icons-material/Mic';
 import MicOffIcon from '@mui/icons-material/MicOff';
 import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare';
-
-import server from '../apiConfig.js';
 import axios from 'axios';
+
+
+const server = "http://localhost:5000/api"
+
 const server_url = server.prod;
 
 var connections = {};

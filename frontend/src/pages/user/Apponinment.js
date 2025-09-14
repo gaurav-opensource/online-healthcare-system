@@ -1,42 +1,57 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-// Main AppointmentForm component
+import BASE_URL from '../../apiConfig';
+
+
 const AppointmentForm = () => {
   const { doctorId } = useParams();
-  const [appointmentDate, setAppointmentDate] = useState('');
-  const [description, setDescription] = useState('');
+  const [appointmentDate, setAppointmentDate] = useState("");
+  const [description, setDescription] = useState("");
   const navigate = useNavigate();
-  const userId = localStorage.getItem('userId'); // stored after login
+
+  const userId = localStorage.getItem("userId"); 
+  const token = localStorage.getItem("token");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Basic validation (optional, can be expanded)
     if (!appointmentDate || !description) {
-      console.error('Please fill in all fields.');
-      // In a real app, you'd show a user-friendly error message here (e.g., a modal)
+      console.error("Please fill in all fields.");
       return;
     }
 
-    // Send details to payment page instead of creating appointment directly
-    // Using console.log instead of alert for demonstration
-    console.log('Navigating to payment with:', {
-      doctorId,
-      userId,
-      appointmentDate,
-      description,
-      amount: 500
-    });
+    try {
+      const res = await axios.post(
+        `${BASE_URL}/appointments`,
+        {
+          userId,
+          doctorId,
+          appointmentDate,
+          description,
+          amount:100
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+          },
+        }
+      );
 
-    navigate(`/user/payment?doctorId=${doctorId}&userId=${userId}&appointmentDate=${appointmentDate}&description=${description}&amount=500`);
+      console.log("Appointment booked successfully!", res.data);
+      navigate("/user/home"); // redirect after success
+    } catch (err) {
+      console.error(
+        "Booking failed:",
+        err.response ? err.response.data : err.message
+      );
+    }
   };
 
   return (
-    // Outer container for the full-page background
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-sans">
-      {/* Main form card container with consistent styling */}
-      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-md p-8 relative transform hover:scale-[1.01] transition-transform duration-300 ease-in-out mx-auto mt-16 px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 font-sans pt-20px">
+      <div className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-w-md p-8 mx-auto mt-16 relative transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
         {/* Form Header */}
         <div className="flex items-center justify-center mb-8">
           <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
@@ -47,7 +62,10 @@ const AppointmentForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Date & Time Input */}
           <div>
-            <label htmlFor="appointmentDate" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="appointmentDate"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Date & Time:
             </label>
             <FormInput
@@ -62,7 +80,10 @@ const AppointmentForm = () => {
 
           {/* Description Textarea */}
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="description"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Description:
             </label>
             <textarea
@@ -71,17 +92,17 @@ const AppointmentForm = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
-              rows="4" // Added rows for better textarea appearance
-              className="appearance-none relative block w-full px-3 py-2 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors duration-200 resize-y rounded-md" // Added rounded-md for textarea
+              rows="4"
+              className="appearance-none relative block w-full px-3 py-2 border-b-2 border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm transition-colors duration-200 resize-y rounded-md"
             />
           </div>
 
-          {/* Proceed to Payment Button */}
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-blue-500 to-teal-500 text-white py-3 rounded-lg font-semibold text-lg shadow-lg hover:from-blue-600 hover:to-teal-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
-            Proceed to Payment
+            Book Appointment
           </button>
         </form>
       </div>
@@ -89,7 +110,7 @@ const AppointmentForm = () => {
   );
 };
 
-// Reusable Form Input Component (for consistency with registration form)
+// Reusable Input Component
 const FormInput = ({ id, type, name, value, onChange, placeholder, required }) => (
   <input
     id={id}

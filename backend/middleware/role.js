@@ -1,4 +1,4 @@
-const User = require('../models/user.model'); // Adjust paths
+const User = require('../models/user.model'); 
 const Doctor = require('../models/doctor.model');
 const Admin = require('../models/admin.model');
 
@@ -10,6 +10,7 @@ const restrictTo = (...roles) => {
             }
 
             let user;
+            
             if (req.user.role === 'user') {
                 user = await User.findById(req.user._id);
             } else if (req.user.role === 'doctor') {

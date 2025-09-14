@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
   const [role, setRole] = useState(null);
   const navigate = useNavigate();
 
-  // Load data from localStorage on page refresh
+ 
   useEffect(() => {
     const token = localStorage.getItem('token');
     const storedRole = localStorage.getItem('role');
@@ -28,21 +28,21 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // Login function (called after successful login API call)
+
   const login = (userData, token, userRole) => {
     
     console.log("Logging in user:", userData);
     localStorage.setItem('token', token);
     localStorage.setItem('role', userRole);
     localStorage.setItem('user', JSON.stringify(userData));
-    localStorage.setItem('userId', userData.id); // ✅ Save userId separately
+    localStorage.setItem('userId', userData.id); 
 
-    // Update context state
+  
     setUser(userData);
     setRole(userRole);
     setIsAuthenticated(true);
 
-    // Navigate to role-based dashboard
+    
     navigate(`/${userRole}/home`);
   };
 
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('token');
     localStorage.removeItem('role');
     localStorage.removeItem('user');
-    localStorage.removeItem('userId'); // ✅ Clear userId too
+    localStorage.removeItem('userId');
 
     // Clear context state
     setUser(null);

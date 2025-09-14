@@ -1,6 +1,8 @@
 import axios from 'axios';
 import BASE_URL from '../apiConfig.js'
 
+
+
 const login = async (role, email, password) => {
   let endpoint = '';
   if (role === 'user') endpoint = `${BASE_URL}/users/login`;
@@ -19,7 +21,7 @@ export const registerDoctor = (data) => axios.post(`${BASE_URL}/doctors/register
 export const registerAdmin = (data) => axios.post(`${BASE_URL}/admin/register`, data);
 
 const logout = () => {
-  localStorage.removeItem('authData'); // optional: could also call a backend endpoint to invalidate token
+  localStorage.removeItem('authData'); 
 };
 
 const authService = {

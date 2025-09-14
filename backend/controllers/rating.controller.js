@@ -36,6 +36,10 @@ exports.createRating = async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 };
+
+
+
+
 exports.getDoctorRatings = async (req, res) => {
   try {
     const { doctorId } = req.params;

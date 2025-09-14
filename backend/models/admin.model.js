@@ -8,7 +8,7 @@ const adminSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true, // optional but good to ensure email uniqueness
+        unique: true,
     },
     password: {
         type: String,
@@ -22,7 +22,7 @@ const adminSchema = new mongoose.Schema({
     },
     },
     {
-    timestamps: true, // Automatically add createdAt and updatedAt fields
+    timestamps: true, 
     }
 );
 

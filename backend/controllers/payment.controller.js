@@ -6,7 +6,7 @@ exports.processMockPayment = async (req, res) => {
     const { appointmentId, amount } = req.body;
     const userId = req.user.id;
 
-    // Validate input
+  
     if (!appointmentId || !amount) {
       return res.status(400).json({ message: 'Appointment ID and amount are required' });
     }

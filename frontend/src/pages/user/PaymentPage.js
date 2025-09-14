@@ -1,7 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import BASE_URL from '../../../src/apiConfig'; 
-// Main PaymentPage component
+// import BASE_URL from '../../../src/apiConfig'; 
+const BASE_URL = "http://localhost:5000/api";
+
 const PaymentPage = () => {
   const navigate = useNavigate();
   const query = new URLSearchParams(useLocation().search);
@@ -9,11 +10,12 @@ const PaymentPage = () => {
   // Extracting appointment details from URL query parameters
   const doctorId = query.get('doctorId');
   const userId = query.get('userId');
+  console.log(userId)
   const appointmentDate = query.get('appointmentDate');
   const description = query.get('description');
-  const amount = query.get('amount'); // This is a string, might need parsing if used in calculations
+  const amount = query.get('amount');
 
-  // Base URL for API calls (assuming it's consistent across components)
+
 
 
   const handlePaymentSubmit = async () => {

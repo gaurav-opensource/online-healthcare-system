@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const adminController = require('../controllers/admin.controlle');
-const { auth } = require('../middleware/auth'); // Import the auth middleware
+const adminController = require('../controllers/admin.controller');
+const { auth } = require('../middleware/auth'); 
 const { restrictTo } = require('../middleware/role');
 
 // Admin routes

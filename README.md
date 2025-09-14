@@ -1,6 +1,10 @@
 # Online Healthcare System
 
-A comprehensive platform for seamless patient-doctor connectivity and virtual consultations.
+I developed a full-stack healthcare platform that enables smart doctor-patient interaction.
+Users can search doctors, book appointments, make secure payments, and upload reports.
+I implemented role-based access for Admin, Doctor, and User, along with profile management.
+For communication, I integrated video calls using WebRTC and real-time chat using Socket.IO.
+Media files like reports and profile photos are stored on Cloudinary for scalability and performance
 
 ---
 

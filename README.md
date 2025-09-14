@@ -46,6 +46,7 @@ This project is a full-stack online healthcare system designed to bridge the gap
 - **Rating & Feedback:** Patients can rate and leave comments for doctors after an appointment.  
 - **Appointment Status Management:** Doctors can track pending, completed, and upcoming appointments.  
 - **Payment Integration:** The initial implementation uses a basic model, with plans for integration of Razorpay for secure payments.
+- **notifications** Email and SMS notifications for appointments
 
 ---
 
@@ -158,17 +159,18 @@ npm start
 - Manage users and monitor platform activity
 
 ## Future Improvements
-- Razorpay payment gateway integration
 - Advanced doctor search filters
-- Email and SMS notifications for appointments
 - Enhanced dashboards with analytics
 - UI/UX improvements for better experience
+- Users can send their health issues, get suggestions for tests, upload test reports uging ML
 
-## License
-This project is licensed under the ISC License.
 
 ## Contact
-For questions or feedback, open an issue or contact:
+For questions, suggestions, or feedback, feel free to reach out:
 
-**Gaurav**  
+- **Author:** Gaurav Yadav  
+- **Email:** gauravyadavgh@example.com  
+- **LinkedIn:** [linkedin.com/in/gauravyadav](https://www.linkedin.com/in/gauravyadav95/)  
+- **GitHub:** [github.com/gauravyadav](https://github.com/gaurav-opensource)  
+
 
